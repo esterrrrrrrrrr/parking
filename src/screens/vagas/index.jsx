@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Logo, Btn1, Btn2, Txt1, Txt2, Title, VagasContainer, ContainerV, Vaga, WraperV } from "./styles";
 import { useState } from 'react';
 import { Modal } from "react-native";
@@ -115,3 +116,66 @@ const Img = styled.Image`
   width: 16px;
   height: 16px;
 `            
+=======
+import { Logo, Btn1, Btn2, Txt1, Txt2, Title, VagasContainer, ContainerV, Vaga, WraperV, Btn3, BtnWrapper } from "./styles";
+import { useEffect, useState } from 'react';
+import { Modal } from "react-native";
+import BasicModal from "./BasicModal";
+import styled from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
+import SaidaModal from "./SaidaModal"
+import api from "../../services/api";
+
+export default function Vagas() {
+  const [open, setOpen] = useState(false)
+  const [saidaOpen, setSaidaOpen] = useState(false)
+  const [reportOpen, setReportOpen] = useState(false); // Modal de relatório
+  const navigation = useNavigation()
+  const [ativos, setAtivos] = useState([]); // inicializado como array vazio
+
+  function listarVeiculos() {
+    api.get("/api/veiculos")
+      .then((res) => {
+        setAtivos(res.data);  // dados da API
+      })
+      .catch((err) => {
+        console.error('Erro ao listar veículos:', err);
+      });
+  }
+
+  useEffect(() => {
+    listarVeiculos();
+  }, []);
+
+  return (
+    <VagasContainer>
+      <Logo source={require('../../assets/logo.png')} />
+      <Title>VAGAS</Title>
+      <ContainerV>
+        <WraperV>
+
+          {ativos.length > 0 ? (
+            ativos.map((ativo, index) => (
+              <Vaga key={ativo.id ?? index} >
+                <Txt1>{ativo.placa}</Txt1>
+              </Vaga>
+            ))
+          ) : (
+            <Txt1>Nenhum veículo encontrado</Txt1>
+          )}
+
+        </WraperV>
+        <BasicModal visible={open} onClose={() => setOpen(false)} />
+        <SaidaModal visible={saidaOpen} onClose={() => setSaidaOpen(false)} />
+      </ContainerV>
+
+      <BtnWrapper>
+        <Btn3 onPress={() => setOpen(true)}><Txt2>Entrada</Txt2></Btn3>
+        <Btn3 onPress={() => setSaidaOpen(true)}><Txt2>Saída</Txt2></Btn3>
+      </BtnWrapper>
+
+      
+    </VagasContainer>
+  );
+}
+>>>>>>> b3c1594 (feat: create apk)

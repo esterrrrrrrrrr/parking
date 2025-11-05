@@ -28,10 +28,17 @@ gap: 24;
 `
 export const WraperV = styled.View`
 width: 332;
+<<<<<<< HEAD
 height: 116;
 display: flex;
 justify-content: space-between;
 flex-direction: row;
+=======
+display: flex;
+flex-wrap: wrap;
+gap: 36px;
+top: 20;
+>>>>>>> b3c1594 (feat: create apk)
 `
 
 export const Vaga = styled.TouchableOpacity`
@@ -58,6 +65,28 @@ justify-content: center;
 position: absolute;
 bottom: 37;
 `
+<<<<<<< HEAD
+=======
+export const Btn3 = styled.TouchableOpacity`
+display: "flex";
+background-color: #1A1F16;
+width: 156;
+height: 57;
+border-radius: 10px;
+border: #F3DE2C 2px;
+justify-content: center;
+
+`
+export const BtnWrapper = styled.View`
+display: flex;
+flex-direction: row;
+bottom: 80;
+position: absolute;
+justify-content: space-between;
+width: 348;
+`
+
+>>>>>>> b3c1594 (feat: create apk)
 export const Txt2 = styled.Text`
 text-align: center;
 font-size: 24;

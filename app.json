@@ -20,10 +20,19 @@
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.esterbrasil.parking"
     },
     "web": {
       "favicon": ""
+<<<<<<< HEAD
+=======
+    },
+    "extra": {
+      "eas": {
+        "projectId": "17ac5aec-74de-4707-8f57-a4d7d4704c52"
+      }
+>>>>>>> b3c1594 (feat: create apk)
     }
   }
 }

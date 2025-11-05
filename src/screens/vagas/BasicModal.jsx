@@ -1,7 +1,30 @@
+<<<<<<< HEAD
 import { Modal, Image } from 'react-native';
 import styled from 'styled-components/native';
 
 export default function BasicModal({ visible, onClose }) {
+=======
+import { useState } from 'react';
+import { Modal, Image } from 'react-native';
+import styled from 'styled-components/native';
+import api from '../../services/api';
+
+export default function BasicModal({ visible, onClose }) {
+  const [placa, setPlaca] = useState("");
+  const [data, setData] = useState([])
+
+  function registrarEntrada(){
+    console.log(placa)
+    api.post("/api/veiculos/entrada", { placa })
+    .then((res) => {
+      console.log(res.data)
+      setData(res.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })}
+
+>>>>>>> b3c1594 (feat: create apk)
   return (
     <Modal visible={visible} animationType="slide" transparent={true}>
       <ModalBackground>
@@ -13,6 +36,7 @@ export default function BasicModal({ visible, onClose }) {
           <InputContainer>
               <InputView>
                 <Txt1>Placa</Txt1>
+<<<<<<< HEAD
                 <Input></Input>
               </InputView>
               <InputView>
@@ -25,6 +49,12 @@ export default function BasicModal({ visible, onClose }) {
               </InputView>
           </InputContainer>
           <Btn2>
+=======
+                <Input value={placa} onChangeText={setPlaca}></Input>
+              </InputView>
+          </InputContainer>
+          <Btn2 onPress={registrarEntrada}>
+>>>>>>> b3c1594 (feat: create apk)
             <Txt2>Concluir</Txt2>
           </Btn2>
         </Container>
@@ -38,17 +68,29 @@ const ModalBackground = styled.View`
   flex: 1;
   justify-content: flex-end;
   align-items: center;
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.5);
 `
 
 const Container = styled.View`
   background-color: #1a1f16;
+=======
+  background-color: #1A1F16;
+`
+
+const Container = styled.View`
+  background-color: #1A1F16;
+>>>>>>> b3c1594 (feat: create apk)
   /* padding: 20px; */
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   align-items: center;
   width: 100%;
+<<<<<<< HEAD
   height: 75%;
+=======
+  height: 100%;
+>>>>>>> b3c1594 (feat: create apk)
 `
 
 const CloseButton = styled.TouchableOpacity`
@@ -71,7 +113,11 @@ const Img = styled.Image`
 const Title = styled.Text`
   font-size: 32;
   color: #f3de2c;
+<<<<<<< HEAD
   top: 10%;
+=======
+  top: 30%;
+>>>>>>> b3c1594 (feat: create apk)
 `
 const Txt1 = styled.Text`
   font-size: 24;
